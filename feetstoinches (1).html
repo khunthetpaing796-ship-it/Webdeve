@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feets ⇄ Inches Converter</title>
+  <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      
+    }
+    .converter {
+      width: 500px;
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    input, select, button {
+      width: 320px;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+    
+    
+    
+    button {
+      background: #5C67D1;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    
+    button:hover {
+      background: #0056b3;
+    }
+    
+    .result {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #624242;
+    }
+    
+    a{
+        text-decoration: none;
+        padding: 10px;
+        border: 1px solid gray;
+        border-radius: 10px;
+        background-color: #00DE96;
+    }
+  </style>
+</head>
+<body>
+    <div class="converter">
+    <h2>Feets ⇄ Inches Converter</h2>
+    <input type="number" id="inputValue" placeholder="Enter value">
+    
+    <select id="conversionType">
+      <option value="ft-to-inches">Feets → Inches</option>
+      <option value="inches-to-feets">Inches → Feets</option>
+    </select>
+    
+    <button onclick="convert()">Convert</button>
+    <div class="result" id="result"></div>
+    <br>
+    <a href="http://localhost:7700/pro1/Coverter.html">Return to home, for another convert Units.</a>
+  </div>
+
+  <script>
+    function convert() {
+      let value = parseFloat(document.getElementById("inputValue").value);
+        let conversionType = document.getElementById("conversionType").value;
+        let resultElement = document.getElementById("result");
+        
+        if (isNaN(value)) {
+            resultElement.innerHTML = "Please enter a number!";
+            return;
+        }
+        
+        let result;
+        if (conversionType === "ft-to-inches") {
+            result = value * 12; // 1 feet = 12 inches
+            resultElement.innerHTML = `${value} feets = ${result.toFixed(4)} inches`;
+        } else {
+            result = value / 12; // 1 inches = 0.0833 feets
+            resultElement.innerHTML = `${value} inches = ${result.toFixed(4)} feets`;
+        }
+    }
+  </script>
+
+</body>
+</html>
