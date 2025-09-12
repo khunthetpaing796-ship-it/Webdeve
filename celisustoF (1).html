@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Temperature Converter</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background: #f1f1f1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .converter {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 500px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    input, select, button {
+      width: 320px;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .result {
+      margin: 15px 0;
+      font-weight: bold;
+      color: #222;
+    }
+    
+    a{
+        text-decoration: none;
+        padding: 10px;
+        border: 1px solid gray;
+        border-radius: 10px;
+        background-color: #00DE96;
+    }
+  </style>
+</head>
+<body>
+  <div class="converter">
+    <h2>Temperature Converter</h2>
+  
+    <input type="number" id="tempInput" placeholder="Enter temperature" />
+
+    <select id="conversionType">
+      <option value="CtoF">Celsius → Fahrenheit</option>
+      <option value="FtoC">Fahrenheit → Celsius</option>
+    </select>
+
+    <button onclick="convertTemp()">Convert</button>
+
+    <div class="result" id="result"></div>
+    
+    <a href="http://localhost:7700/pro1/Coverter.html">Return to home, for another convert Units.</a>
+  </div>
+
+  <script>
+    function convertTemp() {
+      const temp = parseFloat(document.getElementById("tempInput").value);
+      const type = document.getElementById("conversionType").value;
+      let resultText = "";
+
+      if (isNaN(temp)) {
+        resultText = "Please enter a valid number.";
+      } else if (type === "CtoF") {
+        const fahrenheit = (temp * 9/5) + 32;
+        resultText = `${temp} °C = ${fahrenheit.toFixed(2)} °F`;
+      } else if (type === "FtoC") {
+        const celsius = (temp - 32) * 5/9;
+        resultText = `${temp} °F = ${celsius.toFixed(2)} °C`;
+      }
+
+      document.getElementById("result").textContent = resultText;
+    }
+  </script>
+</body>
+</html>
