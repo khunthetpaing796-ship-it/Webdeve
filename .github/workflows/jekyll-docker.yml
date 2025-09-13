@@ -1,0 +1,7 @@
+cd path/to/pro1
+git init                        # first time only
+git remote add origin https://github.com/webdeve/pro1.git
+git add .
+git commit -m "first commit"
+git branch -M main
+git push -u origin main
